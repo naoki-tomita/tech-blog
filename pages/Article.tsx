@@ -1,6 +1,5 @@
-import { Component, h } from "zheleznaya";
+import { Component, h, createEffect } from "zheleznaya";
 import { loadItem, store } from "../Store";
-import { createEffect } from "../Effect";
 import { Title } from "../Title";
 
 const articleEffect = createEffect();

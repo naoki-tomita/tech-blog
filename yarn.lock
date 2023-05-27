@@ -192,10 +192,10 @@ vite@^4.3.8:
   optionalDependencies:
     fsevents "~2.3.2"
 
-zheleznaya@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/zheleznaya/-/zheleznaya-0.2.1.tgz#9b635e4a4aaf7fa5e91c7234df1ffc2cd4902adc"
-  integrity sha512-0E091U7oKvB88hURj7b9t6qi2Jod2NXx44AJVTwJA11WBQjeKeazQ/byhiO2RR8nS2TMCb2qgs0/InslsR7aAQ==
+zheleznaya@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/zheleznaya/-/zheleznaya-0.2.2.tgz#60fb46840bf1f7f508efaa04b24b4b8ef99457e4"
+  integrity sha512-WYb/OZoMguVbb6E/OETeYRrqlP5UyIYEG1awzFi1mYRawkqPJ4ayL6A6UV/dh2JA1iP3e8x2Y6bfnkMJHprWyg==
 
 zstyl@^0.1.5:
   version "0.1.5"

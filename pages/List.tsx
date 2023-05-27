@@ -1,5 +1,4 @@
-import { Component, h } from "zheleznaya";
-import { createEffect } from "../Effect";
+import { Component, h, createEffect } from "zheleznaya";
 import { loadList, store, Link } from "../Store";
 import { Title } from "../Title";
 
