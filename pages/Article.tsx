@@ -1,10 +1,11 @@
 import { Component, h, createEffect } from "zheleznaya";
 import { loadItem, store } from "../Store";
-import { Title } from "../Title";
+import { Title } from "../components/Title";
+import { Html } from "../components/Html";
 
 const effect = createEffect();
 export const ArticlePage: Component<{ id: string }> = ({ id }) => {
-  effect(() => loadItem(id), [id])
+  effect(() => loadItem(id), [id]);
 
   return (
     <article>
@@ -12,7 +13,7 @@ export const ArticlePage: Component<{ id: string }> = ({ id }) => {
       <header>
         <h1>{store.article.content?.title}</h1>
       </header>
-      <div ref={(el) => el.innerHTML = store.article.content?.content ?? ""}></div>
+      <Html html={store.article.content?.content}/>
     </article>
   );
 }

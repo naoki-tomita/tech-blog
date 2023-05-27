@@ -1,6 +1,6 @@
 import { Component, h, createEffect } from "zheleznaya";
 import { loadList, store, Link } from "../Store";
-import { Title } from "../Title";
+import { Title } from "../components/Title";
 
 const effect = createEffect();
 export const ListPage: Component = () => {

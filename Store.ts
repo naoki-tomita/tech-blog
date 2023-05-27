@@ -23,21 +23,24 @@ export const store = createStore<{
     list: [],
   },
   article: {
-    id: "",
-    content: {
-      title: "",
-      content: "",
-    },
+    id: null,
+    content: null,
   }
 });
 
 export async function loadList() {
   const list = await client.list();
+
   store.articles.list = list.contents;
 }
 
 export async function loadItem(id: string) {
+  store.article.content = null;
+  store.article.id = null;
+
   const article = await client.item(id);
+
+  store.article.id = id;
   store.article.content = article;
 }
 
