@@ -1,8 +1,6 @@
 import { Component, h } from "zheleznaya";
 import { createEffect } from "../Effect";
-import { loadList, store } from "../Store";
-import { Link } from "../Router";
-import { client } from "../MicroCmsClient";
+import { loadList, store, Link } from "../Store";
 import { Title } from "../Title";
 
 const listEffect = createEffect();

@@ -1,5 +1,4 @@
 import { Component, h } from "zheleznaya";
-import { client } from "../MicroCmsClient";
 import { loadItem, store } from "../Store";
 import { createEffect } from "../Effect";
 import { Title } from "../Title";

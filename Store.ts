@@ -1,5 +1,6 @@
 import { createStore } from "zheleznaya";
 import { client } from "./MicroCmsClient";
+import { createRouter } from "@kojiro.ueda/zrouter";
 
 export const store = createStore<{
   path: string;
@@ -39,3 +40,5 @@ export async function loadItem(id: string) {
   const article = await client.item(id);
   store.article.content = article;
 }
+
+export const { Router, Link } = createRouter(store);

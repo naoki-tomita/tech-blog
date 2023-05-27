@@ -1,5 +1,5 @@
 import { Component, h, render } from "zheleznaya";
-import { Link, Router } from "./Router";
+import { Link, Router } from "./Store";
 import { ListPage } from "./pages/List";
 import { ArticlePage } from "./pages/Article";
 
