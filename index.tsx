@@ -11,7 +11,7 @@ const App: Component = () => {
       </header>
       <main class="container">
         <Router routes={{
-          "/": () => <ListPage/>,
+          "/": () => <ListPage />,
           "/:id": ({id}) => <ArticlePage id={id} />,
         }}/>
       </main>

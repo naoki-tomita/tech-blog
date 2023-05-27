@@ -2,9 +2,9 @@ import { Component, h, createEffect } from "zheleznaya";
 import { loadItem, store } from "../Store";
 import { Title } from "../Title";
 
-const articleEffect = createEffect();
+const effect = createEffect();
 export const ArticlePage: Component<{ id: string }> = ({ id }) => {
-  articleEffect(() => loadItem(id), [id])
+  effect(() => loadItem(id), [id])
 
   return (
     <article>

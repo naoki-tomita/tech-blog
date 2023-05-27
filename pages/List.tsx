@@ -2,10 +2,10 @@ import { Component, h, createEffect } from "zheleznaya";
 import { loadList, store, Link } from "../Store";
 import { Title } from "../Title";
 
-const listEffect = createEffect();
+const effect = createEffect();
 export const ListPage: Component = () => {
 
-  listEffect(() => loadList(), []);
+  effect(() => loadList(), []);
   return (
     <section>
       <Title label="Tech blog" />
