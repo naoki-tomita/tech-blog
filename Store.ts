@@ -42,6 +42,9 @@ export async function loadItem(id: string) {
 
   store.article.id = id;
   store.article.content = article;
+
+  // for netlify.
+  setTimeout(() => {(window as any).prerenderReady = true;}, 100);
 }
 
 export const { Router, Link } = createRouter(store);
