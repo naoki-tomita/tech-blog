@@ -9,11 +9,11 @@ export const handler: Handler = async (event, context) => {
     context.fillStyle = "#444444";
     context.font = "30px Impact";
     context.fillText(`Tech blog #${id}`, 40, 40);
-    const stream = canvas.toBuffer("image/png");
+    const stream = canvas.toBuffer("image/jpeg");
 
     return {
       statusCode: 200,
-      headers: { "content-type": "image/png" },
+      headers: { "content-type": "image/jpeg" },
       body: stream.toString("base64"),
       isBase64Encoded: true,
     };
