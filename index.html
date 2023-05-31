@@ -19,8 +19,9 @@
   <script>
     // OGP
     document.querySelector("meta[property='og:url']").setAttribute("content", location.href);
-    const id = location.pathname.split("/").at(-1);
-    document.querySelector("meta[property='og:image']").setAttribute("content", location.origin + `/ogp/${id}`);
+    const paths = location.pathname.split("/");
+    const id = paths[paths.length - 1];
+    document.querySelector("meta[property='og:image']").setAttribute("content", location.origin + `/.netlify/functions/ogp/${id}`);
   </script>
 </body>
 </html>
