@@ -1,9 +1,21 @@
-import type { HandlerEvent, HandlerContext, Handler } from "@netlify/functions";
+import { createCanvas } from "canvas";
+import type { Handler } from "@netlify/functions";
 
 export const handler: Handler = async (event, context) => {
   try {
-    console.log(JSON.stringify(event));
-    return { statusCode: 200, body: JSON.stringify({ foo: "bar" }) };
+    const id = event.path.split("/").filter(Boolean)[3];
+    const canvas = createCanvas(600, 400);
+    const context = canvas.getContext("2d");
+    context.fillStyle = "#cccccc";
+    context.font = "30px Impact";
+    context.fillText(`Tech blog #${id}`, 40, 40);
+    const stream = canvas.toBuffer("image/png");
+
+    return {
+      statusCode: 200,
+      headers: { "content-type": "image/png" },
+      body: stream.toString("binary"),
+    };
   } catch (error) {
     console.log(error);
     return {
