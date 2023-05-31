@@ -14,7 +14,8 @@ export const handler: Handler = async (event, context) => {
     return {
       statusCode: 200,
       headers: { "content-type": "image/png" },
-      body: stream.toString("binary"),
+      body: stream.toString("base64"),
+      isBase64Encoded: true,
     };
   } catch (error) {
     console.log(error);
