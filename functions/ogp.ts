@@ -2,8 +2,8 @@ import { createCanvas, registerFont } from "canvas";
 import type { Handler } from "@netlify/functions";
 import fetch from "node-fetch";
 
-const BackgroundColor = "#18232c";
-const FontColor = "#edf0f3";
+const BackgroundColor = "#434343";
+const FontColor = "#CCCCCC";
 const Width = 800;
 const Height = 320;
 
@@ -20,8 +20,8 @@ export const handler: Handler = async (event, context) => {
     context.fillStyle = FontColor;
     context.font = `30px "Impact"`;
     context.fillText(`Tech blog`, 40, 40);
-    context.font = `40px "Rampart One"`;
-    context.fillText(response.title, 40, 80);
+    context.font = `52px "Rampart One"`;
+    context.fillText(response.title, 40, 92);
 
     const stream = canvas.toBuffer("image/jpeg");
 
