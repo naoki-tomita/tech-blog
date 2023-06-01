@@ -327,11 +327,6 @@ has-unicode@^2.0.1:
   resolved "https://registry.npmjs.org/has-unicode/-/has-unicode-2.0.1.tgz"
   integrity sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==
 
-highlight.js@^11.8.0:
-  version "11.8.0"
-  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.8.0.tgz"
-  integrity sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==
-
 https-proxy-agent@^5.0.0:
   version "5.0.1"
   resolved "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz"
@@ -649,7 +644,7 @@ zheleznaya@^0.2.3:
   resolved "https://registry.npmjs.org/zheleznaya/-/zheleznaya-0.2.3.tgz"
   integrity sha512-Is3bAA5DFxneIfwEErPAipdPWlGzW8cCWRpk+K3Zm0sdzRhK+pAE1GPGhPP+69eIvZN2dwNTtfKTJhanS3mAcA==
 
-zstyl@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.npmjs.org/zstyl/-/zstyl-0.1.5.tgz"
-  integrity sha512-WjvvCd+AjTRCNdoM4hFrUjWz0JOXIQS7xW1yUPIH48jBOiSjbEJw7Y9QemFir+wQqlQkjuxNEF2TVSYd62WQVQ==
+zstyl@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/zstyl/-/zstyl-0.2.0.tgz#035d240f510fde502368bdf56b24182018074f51"
+  integrity sha512-4RQoHkHe4DOllt71F2kqaa2fkDRpMRsamgv55CYQpjdrlc1qnz+1STS3Eq4iMvpmRCVqz1lq0n5nA8fZiWtUag==
