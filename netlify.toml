@@ -8,3 +8,4 @@
 
 [functions.ogp]
   external_node_modules = ["canvas"]
+  included_files = ["functions/font.ttf"]
