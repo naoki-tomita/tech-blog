@@ -11,15 +11,19 @@ export const handler: Handler = async (event, context) => {
     // context.font = "30px Impact";
     // context.fillText(`Tech blog #${id}`, 40, 40);
     // const stream = canvas.toBuffer("image/jpeg");
-    const dirs = await readdir("/var/task/node_modules/canvas/build/Release");
-    console.log(dirs)
+    // const dirs = await readdir("/var/task/node_modules/canvas/build/Release");
+    console.log(await readdir("/var"))
+    console.log(await readdir("/var/task"))
+    console.log(await readdir("/var/task/node_modules"))
+    console.log(await readdir("/var/task/node_modules/canvas"))
+    console.log(await readdir("/var/task/node_modules/canvas/build"))
 
     return {
       statusCode: 200,
       // headers: { "content-type": "image/jpeg" },
       // body: stream.toString("base64"),
       // isBase64Encoded: true,
-      body: dirs.join(", ")
+      // body: dirs.join(", ")
     };
   } catch (error) {
     console.log(error);
