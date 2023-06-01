@@ -23,11 +23,11 @@ export const handler: Handler = async (event, context) => {
     context.font = `52px "Rampart One"`;
     context.fillText(response.title, 40, 92);
 
-    const stream = canvas.toBuffer("image/jpeg");
+    const stream = canvas.toBuffer("image/png");
 
     return {
       statusCode: 200,
-      headers: { "content-type": "image/jpeg" },
+      headers: { "content-type": "image/png" },
       body: stream.toString("base64"),
       isBase64Encoded: true,
     };
