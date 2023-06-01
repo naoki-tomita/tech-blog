@@ -9,9 +9,10 @@ export const handler: Handler = async (event, context) => {
     registerFont(__dirname + "/font.ttf", { family: "Rampart One" });
     const canvas = createCanvas(600, 320);
     const context = canvas.getContext("2d");
-    context.fillStyle = "#444444";
-    context.font = `30px "Rampart One"`;
+    context.fillStyle = "#fff";
+    context.font = `20px "Impact"`;
     context.fillText(`Tech blog`, 40, 40);
+    context.font = `30px "Rampart One"`;
     context.fillText(response.title, 40, 80);
     const stream = canvas.toBuffer("image/jpeg");
 
