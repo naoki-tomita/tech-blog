@@ -1,4 +1,4 @@
-// import { createCanvas } from "canvas";
+import { createCanvas } from "canvas";
 import type { Handler } from "@netlify/functions";
 import { readdir } from "fs/promises";
 
