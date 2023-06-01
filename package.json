@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@kojiro.ueda/zrouter": "^0.0.5",
+    "canvas": "^2.11.2",
     "prismjs": "^1.29.0",
     "zheleznaya": "^0.2.3",
     "zstyl": "^0.2.0"

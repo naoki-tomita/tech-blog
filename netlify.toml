@@ -2,3 +2,8 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[functions]
+  directory = "functions/"
+  external_node_modules = ["canvas"]
+  included_files = ["functions/node_modules/canvas/build/Release/canvas.node"]
