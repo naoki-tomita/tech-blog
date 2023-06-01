@@ -5,8 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "@kojiro.ueda/zrouter": "^0.0.5",
+    "@types/prismjs": "^1.26.0",
     "canvas": "^2.11.2",
     "highlight.js": "^11.8.0",
+    "prismjs": "^1.29.0",
     "zheleznaya": "^0.2.3",
     "zstyl": "^0.1.5"
   },
