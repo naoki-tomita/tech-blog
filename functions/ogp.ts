@@ -19,9 +19,9 @@ export const handler: Handler = async (event, context) => {
 
     context.fillStyle = FontColor;
     context.font = `30px "Impact"`;
-    context.fillText(`Tech blog`, 40, 40);
+    context.fillText(`Tech blog`, 30, 40);
     context.font = `52px "Rampart One"`;
-    context.fillText(response.title, 40, 92);
+    context.fillText(response.title, 30, 92);
 
     const stream = canvas.toBuffer("image/png");
 
