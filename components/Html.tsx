@@ -14,6 +14,7 @@ export const Html: Component<{ html?: string }> = ({ html }) => {
     <div
       class={css`
         & pre > code {
+          font-size: 16px;
           display: inline-block;
           padding: 0;
         }
