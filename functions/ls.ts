@@ -1,5 +1,6 @@
 import type { Handler } from "@netlify/functions";
 import { readdir } from "fs/promises";
+import { renderToText, h } from "zheleznaya";
 
 export const handler: Handler = async (event, context) => {
   try {
@@ -8,6 +9,7 @@ export const handler: Handler = async (event, context) => {
     console.log(await readdir("/var/task/node_modules"))
     console.log(await readdir("/var/task/node_modules/canvas"))
     console.log(await readdir("/var/task/node_modules/canvas/build"))
+    console.log(await renderToText(h("div", {}, "hello world")));
 
     return {
       statusCode: 200,
