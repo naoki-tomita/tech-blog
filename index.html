@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech blog</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="./node_modules/highlight.js/styles/monokai-sublime.css">
   <meta property="og:url" content="" />
   <meta property="og:type" content="" />
   <meta property="og:title" content="" />
@@ -18,11 +19,6 @@
 <body>
   <div id="app"></div>
   <script type="module" src="./index.tsx"></script>
-  <script>
-    document.querySelector("meta[property='og:url']").setAttribute("content", location.href);
-    const paths = location.pathname.split("/");
-    const id = paths[paths.length - 1];
-    document.querySelector("meta[property='og:image']").setAttribute("content", location.origin + "/.netlify/functions/ogp/" + id + ".jpg");
-  </script>
+  <script type="module" src="./OGP.ts"></script>
 </body>
 </html>
