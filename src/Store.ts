@@ -8,6 +8,7 @@ export const store = createStore<{
     list: Array<{
       id: string;
       title: string;
+      publishedAt: string;
     }>;
   },
   article: {
@@ -15,6 +16,7 @@ export const store = createStore<{
     content: {
       title: string;
       content: string;
+      publishedAt: string;
     } | null;
   };
 }>({

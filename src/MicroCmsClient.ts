@@ -18,4 +18,9 @@ export class MicroCmsClient<T> {
   }
 }
 
-export const client = new MicroCmsClient<{ content: string, title: string, id: string }>("ku-tech", "blogs", "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq");
+export const client = new MicroCmsClient<{
+  id: string
+  title: string,
+  content: string,
+  publishedAt: string,
+}>("ku-tech", "blogs", "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq");
