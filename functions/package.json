@@ -8,6 +8,7 @@
     "node-fetch": "^3.3.1",
     "zheleznaya": "^0.2.3"
   },
+  "type": "module",
   "devDependencies": {
     "@types/node-fetch": "^2.6.4"
   }

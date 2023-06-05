@@ -1,4 +1,6 @@
 import { h, renderToText, Component } from "zheleznaya";
+import fetch from "node-fetch";
+
 const React = {
   createElement: h,
 };
