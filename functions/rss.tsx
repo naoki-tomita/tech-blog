@@ -50,13 +50,13 @@ export const Rss: Component<{
 
 export const handler = async () => {
   try {
-    const entries = await fetch(`https://ku-tech.microcms.io/api/v1/blogs`, { headers: { "X-MICROCMS-API-KEY": "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq" } })
+    const results: any = await fetch(`https://ku-tech.microcms.io/api/v1/blogs`, { headers: { "X-MICROCMS-API-KEY": "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq" } })
       .then(it => it.json());
 
     return {
       statusCode: 200,
       headers: { "content-type": "text/html" },
-      body: renderToText(h(Rss, { entries })),
+      body: renderToText(<Rss entries={results.contents} />),
     };
   } catch (error) {
     console.log(error);
