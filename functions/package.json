@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.11.2",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "zheleznaya": "^0.2.3"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.4"
