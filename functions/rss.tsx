@@ -27,7 +27,7 @@ const Entry: Component<{
       <title>{title}</title>
       <link rel="alternate" type="text/html" href={`https://ku-tech.netlify.app/${id}`} />
       <updated>{updatedAt}</updated>
-      <summary>{summary}</summary>
+      {/* <summary>{summary}</summary> */}
     </entry>
   );
 }
