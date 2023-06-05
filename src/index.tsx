@@ -17,6 +17,7 @@ const App: Component = () => {
       </main>
       <footer class="container">
         <h6>by kojiro.ueda</h6>
+        <p><a href="/.netlify/functions/rss">RSS</a></p>
       </footer>
     </div>
   );
