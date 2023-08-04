@@ -53,24 +53,23 @@ function createTableOfContents(html: string) {
     .filter(it => headingTags.includes(it.nodeName.toLowerCase()))
     .map(it => it as HTMLElement)
     .map(it => ({ tagName: it.nodeName.toLowerCase(), text: it.textContent!, children: [], id: it.id }))
-  const toc: TOC[] = []
-  headings.forEach(it => {
-    if (it.tagName === "h1" || toc.length === 0) {
-      toc.push(it);
-      return;
+  return headings.reduce((p, it) => {
+    if (it.tagName === "h1" || p.length === 0) {
+      p.push(it);
+      return p;
     }
-    const children = toc[toc.length - 1].children;
+    const children = p[p.length - 1].children;
     if (it.tagName === "h2" || children.length === 0) {
       children.push(it);
-      return;
+      return p;
     }
     const grandChildren = children[children.length - 1].children;
     if (it.tagName === "h3") {
       grandChildren.push(it)
-      return;
+      return p;
     }
-  });
-  return toc;
+    return p;
+  }, [] as TOC[]);
 }
 
 export async function loadItem(id: string) {
