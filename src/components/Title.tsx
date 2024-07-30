@@ -5,4 +5,4 @@ export const Title: Component<{ label: string }> = ({ label }) => {
   _title.innerText = label;
   _ogpTitle.setAttribute("content", label);
   return <div></div>;
-}
+};

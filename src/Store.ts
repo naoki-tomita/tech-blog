@@ -7,7 +7,7 @@ export type TOC = {
   text: string;
   id: string;
   children: TOC[];
-}
+};
 
 export const store = createStore<{
   path: string;
@@ -17,7 +17,9 @@ export const store = createStore<{
       title: string;
       publishedAt: string;
     }>;
-  },
+    count: number;
+    page: number;
+  };
   article: {
     id: string | null;
     content: {
@@ -31,18 +33,23 @@ export const store = createStore<{
   path: location.pathname,
   articles: {
     list: [],
+    count: 0,
+    page: 0,
   },
   article: {
     id: null,
     content: null,
     tableOfContents: [],
-  }
+  },
 });
 
-export async function loadList() {
-  const list = await client.list();
+export const PageSize = 10;
+export async function loadList(page: number) {
+  const list = await client.list(page * PageSize);
 
   store.articles.list = list.contents;
+  store.articles.count = list.totalCount;
+  store.articles.page = page;
 }
 
 const headingTags = ["h1", "h2", "h3"];
@@ -50,9 +57,14 @@ function createTableOfContents(html: string) {
   const div = document.createElement("div");
   div.innerHTML = html;
   const headings = [...div.childNodes]
-    .filter(it => headingTags.includes(it.nodeName.toLowerCase()))
-    .map(it => it as HTMLElement)
-    .map(it => ({ tagName: it.nodeName.toLowerCase(), text: it.textContent!, children: [], id: it.id }))
+    .filter((it) => headingTags.includes(it.nodeName.toLowerCase()))
+    .map((it) => it as HTMLElement)
+    .map((it) => ({
+      tagName: it.nodeName.toLowerCase(),
+      text: it.textContent!,
+      children: [],
+      id: it.id,
+    }));
   return headings.reduce((p, it) => {
     if (it.tagName === "h1" || p.length === 0) {
       p.push(it);
@@ -65,7 +77,7 @@ function createTableOfContents(html: string) {
     }
     const grandChildren = children[children.length - 1].children;
     if (it.tagName === "h3") {
-      grandChildren.push(it)
+      grandChildren.push(it);
       return p;
     }
     return p;
@@ -85,7 +97,9 @@ export async function loadItem(id: string) {
   store.article.tableOfContents = tableOfContents;
 
   // for netlify.
-  setTimeout(() => {(window as any).prerenderReady = true;}, 100);
+  setTimeout(() => {
+    (window as any).prerenderReady = true;
+  }, 100);
 }
 
 export const { Router, Link } = createRouter(store);
