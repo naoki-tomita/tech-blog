@@ -1,6 +1,6 @@
 import { h, Component } from "zheleznaya";
 import { css } from "zstyl";
-import { PageSize } from "../Store";
+import { Link, PageSize } from "../Store";
 
 export const Pagination: Component<{
   currentPage: number;
@@ -18,9 +18,9 @@ export const Pagination: Component<{
       `}
     >
       {currentPage !== 0 ? (
-        <a onclick={() => onPageChange(currentPage - 1)}>{"<-"}</a>
+        <Link href={`?page=${currentPage - 1}`}>{"←"}</Link>
       ) : (
-        <span>{"<-"}</span>
+        <span>{"←"}</span>
       )}
       <ul
         class={css`
@@ -44,7 +44,7 @@ export const Pagination: Component<{
               `}
             >
               {currentPage !== i ? (
-                <a onclick={() => onPageChange(i)}>{i + 1}</a>
+                <Link href={`?page=${i}`}>{i + 1}</Link>
               ) : (
                 i + 1
               )}
@@ -52,9 +52,9 @@ export const Pagination: Component<{
           ))}
       </ul>
       {currentPage !== pageCount - 1 ? (
-        <a onclick={() => onPageChange(currentPage + 1)}>{"->"}</a>
+        <Link href={`?page=${currentPage + 1}`}>{"→"}</Link>
       ) : (
-        <span>{"->"}</span>
+        <span>{"→"}</span>
       )}
     </div>
   );

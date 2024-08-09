@@ -12,8 +12,8 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitUseStrict": true,
     "target": "esnext",
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "module": "nodenext"
   }
 }

@@ -31,51 +31,72 @@ const effect = createEffect();
 export const ArticlePage: Component<{ id: string }> = ({ id }) => {
   effect(() => loadItem(id), [id]);
 
+  console.log(store.article.content?.categories);
   return (
-    <div
-      class={css`
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-
-        @media (max-width: 992px) {
-          flex-direction: column-reverse;
-        }
-      `}
-    >
-      <article
+    <div>
+      <div>
+        <ul
+          class={css`
+            padding: 0;
+            font-size: 12px;
+            display: flex;
+            gap: 8px;
+          `}
+        >
+          {store.article.content?.categories.map(it =>
+            <li class={css`
+              list-style: none;
+            `}>
+              <code>{it.name}</code>
+            </li>) ?? []
+          }
+        </ul>
+      </div>
+      <div
         class={css`
-          flex: 10;
-          min-width: 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
 
           @media (max-width: 992px) {
-            flex: none;
-            margin-top: 0;
-            width: 100%;
+            flex-direction: column-reverse;
           }
         `}
       >
-        <Title label={store.article.content?.title!} />
-        <header>
-          <h1>{store.article.content?.title}</h1>
-        </header>
-        <Html html={store.article.content?.content} />
-      </article>
-      <article
-        class={css`
-          flex: 3;
-          min-width: 0;
-          padding: 16px 16px;
+        <article
+          class={css`
+            flex: 10;
+            min-width: 0;
 
-          @media (max-width: 992px) {
-            flex: none;
-            margin-bottom: 0;
-            width: 100%;
-          }
-        `}
-      >
-        <TableOfContents tocs={store.article.tableOfContents} />
-      </article>
+            @media (max-width: 992px) {
+              flex: none;
+              margin-top: 0;
+              width: 100%;
+            }
+          `}
+        >
+          <Title label={store.article.content?.title!} />
+          <header>
+            <h1>{store.article.content?.title}</h1>
+          </header>
+          <Html html={store.article.content?.content} />
+        </article>
+        <article
+          class={css`
+            flex: 3;
+            min-width: 0;
+            padding: 16px 16px;
+
+            @media (max-width: 992px) {
+              flex: none;
+              margin-bottom: 0;
+              width: 100%;
+            }
+          `}
+        >
+          <TableOfContents tocs={store.article.tableOfContents} />
+        </article>
+      </div>
     </div>
   );
 };

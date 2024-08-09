@@ -32,4 +32,13 @@ export const client = new MicroCmsClient<{
   title: string;
   content: string;
   publishedAt: string;
+  categories: Array<{
+    id: string;
+    name: string;
+  }>
 }>("ku-tech", "blogs", "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq");
+
+export const categoriesClient = new MicroCmsClient<{
+  id: string;
+  name: string;
+}>("ku-tech", "categories", "XZFkLvLrr209UvvuQBAUH4RxR6SBIVIUo2pq");

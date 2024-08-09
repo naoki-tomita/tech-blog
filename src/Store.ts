@@ -1,5 +1,5 @@
 import { createStore } from "zheleznaya";
-import { client } from "./MicroCmsClient";
+import { categoriesClient, client } from "./MicroCmsClient";
 import { createRouter } from "@kojiro.ueda/zrouter";
 
 export type TOC = {
@@ -9,26 +9,42 @@ export type TOC = {
   children: TOC[];
 };
 
+export type AbstractArticle = {
+  id: string;
+  title: string;
+  publishedAt: string;
+}
+
+export type Article = {
+  id: string;
+  title: string;
+  content: string;
+  publishedAt: string;
+  categories: Array<{
+    id: string;
+    name: string;
+  }>
+}
+
+export type Category = {
+  id: string;
+  name: string;
+}
+
 export const store = createStore<{
   path: string;
   articles: {
-    list: Array<{
-      id: string;
-      title: string;
-      publishedAt: string;
-    }>;
+    list: AbstractArticle[];
     count: number;
     page: number;
   };
   article: {
-    id: string | null;
-    content: {
-      title: string;
-      content: string;
-      publishedAt: string;
-    } | null;
+    content: Article | null;
     tableOfContents: TOC[];
   };
+  categories: {
+    list: Category[],
+  },
 }>({
   path: location.pathname,
   articles: {
@@ -37,10 +53,12 @@ export const store = createStore<{
     page: 0,
   },
   article: {
-    id: null,
     content: null,
     tableOfContents: [],
   },
+  categories: {
+    list: [],
+  }
 });
 
 export const PageSize = 10;
@@ -50,6 +68,11 @@ export async function loadList(page: number) {
   store.articles.list = list.contents;
   store.articles.count = list.totalCount;
   store.articles.page = page;
+}
+
+export async function loadCategories() {
+  const categories = await categoriesClient.list(0);
+  store.categories.list = categories.contents;
 }
 
 const headingTags = ["h1", "h2", "h3"];
@@ -86,13 +109,11 @@ function createTableOfContents(html: string) {
 
 export async function loadItem(id: string) {
   store.article.content = null;
-  store.article.id = null;
   store.article.tableOfContents = [];
 
   const article = await client.item(id);
   const tableOfContents = createTableOfContents(article.content);
 
-  store.article.id = id;
   store.article.content = article;
   store.article.tableOfContents = tableOfContents;
 
@@ -102,4 +123,4 @@ export async function loadItem(id: string) {
   }, 100);
 }
 
-export const { Router, Link } = createRouter(store);
+export const { Router, Link, onRouteChange } = createRouter(store);
