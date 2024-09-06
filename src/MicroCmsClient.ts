@@ -10,8 +10,8 @@ export class MicroCmsClient<T> {
     readonly content: string,
     readonly header: string,
   ) {}
-  list(offset: number): Promise<List<T>> {
-    return this.get(this.content, { offset: offset.toString() });
+  list(offset: number, query?: Record<string, string | undefined>): Promise<List<T>> {
+    return this.get(this.content, { offset: offset.toString(), ...query });
   }
   item(id: string): Promise<T> {
     return this.get(`${this.content}/${id}`);

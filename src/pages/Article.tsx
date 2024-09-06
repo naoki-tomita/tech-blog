@@ -3,6 +3,7 @@ import { css } from "zstyl";
 import { TOC, loadItem, store } from "../Store";
 import { Title } from "../components/Title";
 import { Html } from "../components/Html";
+import { CategoryList } from "../components/CategoryList";
 
 const TableOfContent: Component<{ toc: TOC }> = ({ toc }) => {
   return (
@@ -30,27 +31,12 @@ const TableOfContents: Component<{ tocs: TOC[] }> = ({ tocs }) => {
 const effect = createEffect();
 export const ArticlePage: Component<{ id: string }> = ({ id }) => {
   effect(() => loadItem(id), [id]);
-
-  console.log(store.article.content?.categories);
   return (
     <div>
-      <div>
-        <ul
-          class={css`
-            padding: 0;
-            font-size: 12px;
-            display: flex;
-            gap: 8px;
-          `}
-        >
-          {store.article.content?.categories.map(it =>
-            <li class={css`
-              list-style: none;
-            `}>
-              <code>{it.name}</code>
-            </li>) ?? []
-          }
-        </ul>
+      <div class={css`
+        margin-bottom: 16px;
+      `}>
+        <CategoryList categories={store.article.content?.categories ?? []} />
       </div>
       <div
         class={css`

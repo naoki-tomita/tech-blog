@@ -1,8 +1,10 @@
   import { Component, h, createEffect } from "zheleznaya";
-import { loadList, store, Link, AbstractArticle, Category, loadCategories } from "../Store";
+import { loadList, store, Link, AbstractArticle, loadCategories } from "../Store";
 import { Title } from "../components/Title";
 import { css } from "zstyl";
 import { Pagination } from "../components/Pagination";
+import { CategoryList } from "../components/CategoryList";
+import { useQuery } from "../hooks/useQuery";
 
 function toDateString(date: Date) {
   return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
@@ -32,31 +34,9 @@ const ArticleList: Component<{ articles: AbstractArticle[] }> = ({ articles }) =
           >
             {toDateString(new Date(it.publishedAt))}
           </span>
+          <CategoryList categories={it.categories} />
         </li>
       ))}
-    </ul>
-  );
-}
-
-const CategoryList: Component<{ categories: Category[] }> = ({ categories }) => {
-  return (
-    <ul
-      class={css`
-        padding: 0;
-        display: flex;
-        gap: 8px;
-        font-size: 12px;
-      `}
-    >
-      {categories.map(it =>
-        <li class={css`
-          list-style: none;
-        `}>
-          <code>
-            {it.name}
-          </code>
-        </li>
-      )}
     </ul>
   );
 }
@@ -65,8 +45,8 @@ const loadListEffect = createEffect();
 const loadCategoryEffect = createEffect();
 export const ListPage: Component = () => {
   // ここはzrouterをもっと良くして、いい感じに宣言的に書けるようにしたい
-  const page = new URL(`${location.origin}${store.path}`).searchParams.get("page") ?? "0";
-  loadListEffect(() => loadList(parseInt(page, 10)), [parseInt(page, 10)]);
+  const { page, categories } = useQuery();
+  loadListEffect(() => loadList(page, categories), [page, categories?.join(",")]);
   loadCategoryEffect(loadCategories, []);
   return (
     <section>

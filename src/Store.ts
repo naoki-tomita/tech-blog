@@ -13,6 +13,10 @@ export type AbstractArticle = {
   id: string;
   title: string;
   publishedAt: string;
+  categories: Array<{
+    id: string;
+    name: string;
+  }>
 }
 
 export type Article = {
@@ -62,8 +66,11 @@ export const store = createStore<{
 });
 
 export const PageSize = 10;
-export async function loadList(page: number) {
-  const list = await client.list(page * PageSize);
+export async function loadList(page: number, categories: string[]) {
+  const list = await client.list(
+    page * PageSize,
+    { filters: categories.map((it) => `categories[contains]${it}`).join("[or]") },
+  );
 
   store.articles.list = list.contents;
   store.articles.count = list.totalCount;
